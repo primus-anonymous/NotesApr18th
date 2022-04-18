@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NotesApr18th</string>
+    <string name="action_notes">Notes</string>
+    <string name="action_info">Info</string>
+    <string name="notes_list">Notes</string>
+    <string name="info">Info</string>
+</resources>
