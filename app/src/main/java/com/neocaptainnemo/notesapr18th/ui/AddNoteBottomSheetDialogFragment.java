@@ -70,7 +70,7 @@ public class AddNoteBottomSheetDialogFragment extends BottomSheetDialogFragment 
                 btnSave.setEnabled(false);
 
                 if (finalNoteToEdit != null) {
-                    Dependencies.NOTES_REPOSITORY.updateNote(finalNoteToEdit, title.getText().toString(), message.getText().toString(), new Callback<Note>() {
+                    Dependencies.getNotesRepository().updateNote(finalNoteToEdit, title.getText().toString(), message.getText().toString(), new Callback<Note>() {
                         @Override
                         public void onSuccess(Note data) {
 
@@ -92,7 +92,7 @@ public class AddNoteBottomSheetDialogFragment extends BottomSheetDialogFragment 
                     });
                 } else {
 
-                    Dependencies.NOTES_REPOSITORY.addNote(title.getText().toString(), message.getText().toString(), new Callback<Note>() {
+                    Dependencies.getNotesRepository().addNote(title.getText().toString(), message.getText().toString(), new Callback<Note>() {
                         @Override
                         public void onSuccess(Note data) {
 

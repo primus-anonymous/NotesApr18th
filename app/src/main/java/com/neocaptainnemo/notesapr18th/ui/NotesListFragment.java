@@ -16,8 +16,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.neocaptainnemo.notesapr18th.R;
 import com.neocaptainnemo.notesapr18th.di.Dependencies;
 import com.neocaptainnemo.notesapr18th.domain.Callback;
@@ -125,7 +123,7 @@ public class NotesListFragment extends Fragment {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        Dependencies.NOTES_REPOSITORY.getAll(new Callback<List<Note>>() {
+        Dependencies.getNotesRepository().getAll(new Callback<List<Note>>() {
             @Override
             public void onSuccess(List<Note> data) {
                 adapter.setData(data);
@@ -160,7 +158,7 @@ public class NotesListFragment extends Fragment {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                Dependencies.NOTES_REPOSITORY.removeNote(selectedNote, new Callback<Void>() {
+                Dependencies.getNotesRepository().removeNote(selectedNote, new Callback<Void>() {
                     @Override
                     public void onSuccess(Void data) {
 

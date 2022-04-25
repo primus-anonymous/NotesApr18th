@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "480475455805",
+    "project_id": "notes25april",
+    "storage_bucket": "notes25april.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480475455805:android:33f072aeb8dfabf39a2554",
+        "android_client_info": {
+          "package_name": "com.neocaptainnemo.notesapr18th"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480475455805-f3l814pa93q1fqa8ob2gke5bi5ap4e15.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neocaptainnemo.notesapr18th",
+            "certificate_hash": "3be2d011d084b0e10325162d11f0756fe778c0f7"
+          }
+        },
+        {
+          "client_id": "480475455805-k7pib80gci48tp41m6t5dhug27a9pcbj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLo13AAlvCEWZ3uvqBIwrWkMSarY0ekrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480475455805-k7pib80gci48tp41m6t5dhug27a9pcbj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

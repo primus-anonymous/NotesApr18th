@@ -2,12 +2,16 @@ package com.neocaptainnemo.notesapr18th;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentResultListener;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.neocaptainnemo.notesapr18th.ui.AuthFragment;
 import com.neocaptainnemo.notesapr18th.ui.InfoFragment;
 import com.neocaptainnemo.notesapr18th.ui.NotesListFragment;
 
@@ -18,11 +22,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportFragmentManager()
+                .setFragmentResultListener(AuthFragment.KEY_RESULT_AUTHORIZED, this, new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        showNotes();
+                    }
+                });
+
         if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, new NotesListFragment())
-                    .commit();
+            if (isAuthorized()) {
+                showNotes();
+            } else {
+                showAuth();
+            }
         }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -33,10 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_notes:
 
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.container, new NotesListFragment())
-                                .commit();
+                        if (isAuthorized()) {
+                            showNotes();
+                        } else {
+                            showAuth();
+                        }
 
                         return true;
 
@@ -53,5 +67,23 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void showNotes() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, new NotesListFragment())
+                .commit();
+    }
+
+    private void showAuth() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, new AuthFragment())
+                .commit();
+    }
+
+    private boolean isAuthorized() {
+        return GoogleSignIn.getLastSignedInAccount(this) != null;
     }
 }
